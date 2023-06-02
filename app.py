@@ -13,7 +13,7 @@ app=Flask(__name__)
 def index():
     return render_template('home.html') 
 
-@app.route('/predictdata',methods= ['POST','GET'])
+@app.route('/',methods= ['POST','GET'])
 def predict_datapoint():
     if request.method == 'POST':
         data = CustomData(
