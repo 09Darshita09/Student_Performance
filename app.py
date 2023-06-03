@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template
-from src.pipeline.predict_pipeline import CustomData
-import dill
+from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
 import numpy as np
 import pandas as pd
@@ -10,15 +9,6 @@ from sklearn.preprocessing import StandardScaler
 app=Flask(__name__)
 
 ## Route for a home page 
-
-model_file_path = 'artifacts/model.pkl'
-with open(model_file_path, 'rb') as file:
-    model = dill.load(file)
-
-preprocessor_file_path = 'artifacts/preprocessor.pkl' 
-with open(preprocessor_file_path, 'rb') as file:
-    preprocessor = dill.load(file)
-
 
 @app.route('/')
 def index():
@@ -40,12 +30,12 @@ def predict_datapoint():
         pred_df = data.get_data_as_dataframe()
         print(pred_df)
 
-        data_scaled = preprocessor.transform(pred_df)
-        results = model.predict(data_scaled)
-       
+        predict_pipeline=PredictPipeline()
+        results = predict_pipeline.predict(pred_df)
+               
     return render_template('home.html',results=results[0])
 
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",debug=True)
+    app.run(host="0.0.0.0")
