@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from src.pipeline.predict_pipeline import CustomData
-import pickle
+import dill
 
 import numpy as np
 import pandas as pd
@@ -13,12 +13,11 @@ app=Flask(__name__)
 
 model_file_path = 'artifacts/model.pkl'
 with open(model_file_path, 'rb') as file:
-    # Load the model
-    model = pickle.load(file)
+    model = dill.load(file)
 
 preprocessor_file_path = 'artifacts/preprocessor.pkl' 
 with open(preprocessor_file_path, 'rb') as file:
-    preprocessor = pickle.load(file)
+    preprocessor = dill.load(file)
 
 
 @app.route('/')
