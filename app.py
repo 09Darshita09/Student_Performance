@@ -10,6 +10,16 @@ app=Flask(__name__)
 
 ## Route for a home page 
 
+model_file_path = 'artifacts/model.pkl'
+with open(model_file_path, 'rb') as file:
+    # Load the model
+    model = pickle.load(file)
+
+preprocessor_file_path = 'artifacts/preprocessor.pkl' 
+with open(preprocessor_file_path, 'rb') as file:
+    preprocessor = pickle.load(file)
+
+
 @app.route('/')
 def index():
     return render_template('home.html') 
@@ -32,9 +42,6 @@ def predict_datapoint():
        
         print(pred_df)
 
-        model = pickle.load(open('artifacts\model.pkl', 'rb'))
-        preprocessor = pickle.load(open('artifacts\preprocessor.pkl', 'rb'))
-        
         data_scaled = preprocessor.transform(pred_df)
         results = model.predict(data_scaled)
        
