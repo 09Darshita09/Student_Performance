@@ -14,7 +14,7 @@ This project covers a wide range of functionalities, including exploratory data 
 1. [Project Structure](#%EF%B8%8F-project-structure)
 2. [Data](#-Data)
 3. [EDA](#-exploratory-data-analysis-eda) 
-4. [Feature Engineering](#-feature-engineering)
+4. [Feature Engineering](#%EF%B8%8F-feature-engineering)
 5. [Model Selection](#-model-selection)
 6. [Flask App on Render](#-flask-app-on-render)
 7. [Future work](#-Future-work)
