@@ -120,9 +120,10 @@ Checkout the web application at: [Student Performance Predictor](https://student
 The web application developed in this project allows users to interact with the dataset and gain insights into the factors influencing students' exam performance. The application has a user-friendly interface to input new data into home page and check the prediction on the prediction page.
 
 The web application is developed using a WSGI framework **Flask** in app.py and it is then deployed on **Render**.
-
+Home page:
 ![Home page](images/Home_page.png)
 
+Prediction page:
 ![Prediction page](images/Prediction_page.png)
 ## 🚀 Future work
 
